@@ -11,7 +11,13 @@ After an atrocity or trauma, victims require two vital pillars:
 1. **A safe, confidential space** to reflect, breathe, de-escalate crisis, and understand their legal protections without fear of exposure.
 2. **Institutional accountability and continuous outreach** ensuring caseworkers, protection officers, and administrative authorities actively follow up and never let a case slip through the cracks.
 
-This repository hosts the unified entry gateway connecting both portals:
+### 🌐 Live Portal Gateway: [shayakandzen.vercel.app](https://shayakandzen.vercel.app/)
+
+<p align="center">
+  <img src="qr-code.png" alt="Scan QR Code to open shayakandzen.vercel.app" width="180">
+  <br>
+  <em>Scan to open <b>shayakandzen.vercel.app</b> directly on mobile</em>
+</p>
 
 | Portal | Audience | Live URL | Core Purpose |
 |---|---|---|---|

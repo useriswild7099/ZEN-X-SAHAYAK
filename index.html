@@ -501,11 +501,119 @@
       color: var(--ink-secondary);
     }
 
+    /* QR Code Section */
+    .qr-section {
+      margin: 10px 0 40px;
+    }
+    .qr-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .qr-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--muted);
+    }
+    .qr-image-wrapper {
+      background: #FFFFFF;
+      padding: 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .qr-image-wrapper img {
+      display: block;
+      width: 140px;
+      height: 140px;
+      border-radius: 4px;
+    }
+    .qr-info {
+      flex: 1;
+    }
+    .qr-badge {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+      background: var(--accent-soft);
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .qr-info h3 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 1.6rem;
+      color: var(--ink);
+      margin-bottom: 8px;
+    }
+    .qr-info p {
+      color: var(--ink-secondary);
+      font-size: 0.98rem;
+      line-height: 1.55;
+      margin-bottom: 18px;
+      max-width: 58ch;
+    }
+    .qr-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .qr-download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      color: var(--ink);
+      transition: var(--transition);
+    }
+    .qr-download-btn:hover {
+      border-color: var(--zen);
+      color: var(--zen);
+      background: var(--zen-soft);
+    }
+    .qr-download-btn.secondary:hover {
+      border-color: var(--sah);
+      color: var(--sah);
+      background: var(--sah-soft);
+    }
+
     /* Responsive */
     @media (max-width: 860px) {
       .pair {
         grid-template-columns: 1fr;
         gap: 24px;
+      }
+      .qr-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        padding: 24px;
+      }
+      .qr-info p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .qr-actions {
+        justify-content: center;
       }
       .flow {
         grid-template-columns: 1fr;
@@ -645,6 +753,38 @@
           </a>
         </article>
 
+      </section>
+
+      <!-- Instant Mobile QR Access -->
+      <section class="qr-section" aria-label="Mobile QR Access">
+        <div class="qr-card">
+          <div class="qr-image-wrapper">
+            <img src="qr-code.svg" alt="QR code to open shayakandzen.vercel.app on mobile" width="140" height="140">
+          </div>
+          <div class="qr-info">
+            <span class="qr-badge">Instant Mobile Access</span>
+            <h3>Scan &amp; Open On Any Phone</h3>
+            <p>Scan with your smartphone camera to immediately open <strong>shayakandzen.vercel.app</strong>. Seamlessly evaluate both Zen and Sahayak on mobile devices.</p>
+            <div class="qr-actions">
+              <a href="qr-code.png" download="shayakandzen-qr.png" class="qr-download-btn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Download QR (PNG)</span>
+              </a>
+              <a href="qr-code.svg" download="shayakandzen-qr.svg" class="qr-download-btn secondary">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Download Vector (SVG)</span>
+              </a>
+            </div>
+          </div>
+        </div>
       </section>
 
       <!-- Unified Workflow -->

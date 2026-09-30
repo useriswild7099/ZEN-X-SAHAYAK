@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Zen &amp; Sahayak | Two Portals, One Safety Net</title>
+  
+  <!-- SEO & Social Meta Tags -->
+  <meta name="description" content="Zen & Sahayak: Two integrated portals built for SIH Problem Statement 26094. Zen provides daily private healing for victims, while Sahayak empowers caseworkers with continuous follow-up and monitoring.">
+  <meta name="theme-color" content="#2F6B5E" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#10191C" media="(prefers-color-scheme: dark)">
+  <meta property="og:title" content="Zen & Sahayak | Two Portals, One Safety Net">
+  <meta property="og:description" content="Smart India Hackathon SIH 26094: Integrated victim rehabilitation, psychological companion, and administrative casework dashboard.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232F6B5E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z'/></svg>">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..800;1,8..60,400..800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #F4F7F5;
+      --bg-surface: #FFFFFF;
+      --card-bg: #FFFFFF;
+      --ink: #101B20;
+      --ink-secondary: #47585F;
+      --muted: #667980;
+      --line: #D5DFDC;
+      --line-subtle: #E6ECE9;
+      
+      --zen: #1F6052;
+      --zen-light: #2F6B5E;
+      --zen-soft: #E0EFEA;
+      --zen-glow: rgba(47, 107, 94, 0.12);
+      
+      --sah: #223268;
+      --sah-light: #2D3E7D;
+      --sah-soft: #E2E7F7;
+      --sah-glow: rgba(43, 58, 116, 0.12);
+      
+      --accent: #C4791E;
+      --accent-soft: #FDF3E7;
+      --danger: #B42318;
+      --danger-soft: #FEE4E2;
+      
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 22px;
+      --radius-full: 9999px;
+      
+      --shadow-sm: 0 1px 3px rgba(16, 27, 32, 0.04);
+      --shadow-md: 0 4px 16px -2px rgba(16, 27, 32, 0.06), 0 2px 6px -1px rgba(16, 27, 32, 0.04);
+      --shadow-lg: 0 16px 36px -4px rgba(16, 27, 32, 0.09), 0 6px 14px -2px rgba(16, 27, 32, 0.04);
+      --transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0C1316;
+      --bg-surface: #131D21;
+      --card-bg: #162226;
+      --ink: #EDF3F1;
+      --ink-secondary: #B1C2BC;
+      --muted: #829690;
+      --line: #24353B;
+      --line-subtle: #1C2A2F;
+      
+      --zen: #5CB8A0;
+      --zen-light: #7CC4B0;
+      --zen-soft: rgba(92, 184, 160, 0.15);
+      --zen-glow: rgba(92, 184, 160, 0.18);
+      
+      --sah: #8C9EFF;
+      --sah-light: #9DAEFF;
+      --sah-soft: rgba(140, 158, 255, 0.15);
+      --sah-glow: rgba(140, 158, 255, 0.18);
+      
+      --accent: #EBB062;
+      --accent-soft: rgba(235, 176, 98, 0.15);
+      --danger: #FDA29B;
+      --danger-soft: rgba(240, 68, 56, 0.15);
+      
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 4px 16px -2px rgba(0, 0, 0, 0.5);
+      --shadow-lg: 0 16px 36px -4px rgba(0, 0, 0, 0.6);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0C1316;
+        --bg-surface: #131D21;
+        --card-bg: #162226;
+        --ink: #EDF3F1;
+        --ink-secondary: #B1C2BC;
+        --muted: #829690;
+        --line: #24353B;
+        --line-subtle: #1C2A2F;
+        
+        --zen: #5CB8A0;
+        --zen-light: #7CC4B0;
+        --zen-soft: rgba(92, 184, 160, 0.15);
+        --zen-glow: rgba(92, 184, 160, 0.18);
+        
+        --sah: #8C9EFF;
+        --sah-light: #9DAEFF;
+        --sah-soft: rgba(140, 158, 255, 0.15);
+        --sah-glow: rgba(140, 158, 255, 0.18);
+        
+        --accent: #EBB062;
+        --accent-soft: rgba(235, 176, 98, 0.15);
+        --danger: #FDA29B;
+        --danger-soft: rgba(240, 68, 56, 0.15);
+        
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.4);
+        --shadow-md: 0 4px 16px -2px rgba(0, 0, 0, 0.5);
+        --shadow-lg: 0 16px 36px -4px rgba(0, 0, 0, 0.6);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: env(safe-area-inset-top, 0px);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Figtree', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 16.5px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .wrap {
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Top Emergency / Helplines Bar */
+    .emergency-bar {
+      background: var(--bg-surface);
+      border-bottom: 1px solid var(--line);
+      padding: 10px 0;
+      font-size: 0.88rem;
+    }
+    .emergency-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .emergency-pills {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .helpline-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--ink-secondary);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      background: var(--bg);
+      border: 1px solid var(--line-subtle);
+      transition: var(--transition);
+    }
+    .helpline-item:hover {
+      border-color: var(--accent);
+      color: var(--ink);
+    }
+    .helpline-item strong {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .helpline-item.urgent strong {
+      color: var(--danger);
+    }
+    .theme-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      background: var(--bg);
+      border: 1px solid var(--line);
+      color: var(--ink-secondary);
+      font-size: 0.85rem;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    .theme-toggle-btn:hover {
+      color: var(--ink);
+      border-color: var(--muted);
+    }
+
+    /* Header */
+    header {
+      padding: 60px 0 36px;
+    }
+    .badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--zen);
+      background: var(--zen-soft);
+      font-weight: 600;
+      font-size: 0.84rem;
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.02em;
+      margin-bottom: 20px;
+      border: 1px solid var(--zen-glow);
+    }
+    .badge-tag::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+    h1 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: clamp(2.2rem, 5.2vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      max-width: 20ch;
+      color: var(--ink);
+    }
+    header p.lead {
+      max-width: 68ch;
+      color: var(--ink-secondary);
+      margin: 22px 0 0;
+      font-size: 1.14rem;
+      line-height: 1.6;
+    }
+
+    /* Portals Grid */
+    .pair {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin: 24px 0 40px;
+    }
+
+    .portal {
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 34px 32px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      overflow: hidden;
+    }
+    .portal::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+    }
+    .portal.zen::before {
+      background: linear-gradient(90deg, var(--zen), #479e8c);
+    }
+    .portal.sah::before {
+      background: linear-gradient(90deg, var(--sah), #4b5fa7);
+    }
+    .portal:hover {
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-3px);
+      border-color: var(--muted);
+    }
+
+    .who {
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: 16px;
+    }
+    .zen .who {
+      background: var(--zen-soft);
+      color: var(--zen);
+    }
+    .sah .who {
+      background: var(--sah-soft);
+      color: var(--sah);
+    }
+
+    h2 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+
+    .portal-desc {
+      margin: 12px 0 20px;
+      color: var(--ink-secondary);
+      font-size: 1.02rem;
+      line-height: 1.55;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin: 0 0 32px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.96rem;
+      color: var(--ink-secondary);
+      line-height: 1.5;
+    }
+    .feature-list li strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .feature-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .zen .feature-icon {
+      color: var(--zen);
+      background: var(--zen-soft);
+    }
+    .sah .feature-icon {
+      color: var(--sah);
+      background: var(--sah-soft);
+    }
+
+    .btn {
+      margin-top: auto;
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.02rem;
+      padding: 14px 24px;
+      border-radius: var(--radius-md);
+      color: #FFFFFF;
+      transition: var(--transition);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    }
+    .zen .btn {
+      background: var(--zen);
+    }
+    .zen .btn:hover {
+      background: var(--zen-light);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px var(--zen-glow);
+    }
+    .sah .btn {
+      background: var(--sah);
+    }
+    .sah .btn:hover {
+      background: var(--sah-light);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px var(--sah-glow);
+    }
+    .btn svg {
+      transition: transform 0.2s ease;
+    }
+    .btn:hover svg {
+      transform: translateX(3px);
+    }
+    .btn:focus-visible, a:focus-visible, button:focus-visible {
+      outline: 3px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    /* Together / Integration section */
+    .together {
+      background: var(--bg-surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 42px 36px;
+      margin: 10px 0 40px;
+      box-shadow: var(--shadow-sm);
+    }
+    .together h3 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 1.75rem;
+      margin-bottom: 12px;
+      color: var(--ink);
+    }
+    .together p.together-desc {
+      max-width: 72ch;
+      margin: 0 0 26px;
+      color: var(--ink-secondary);
+      font-size: 1.05rem;
+    }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .flow-card {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+      border-left: 5px solid var(--accent);
+      transition: var(--transition);
+    }
+    .flow-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+    .flow-card b {
+      display: block;
+      font-family: "Source Serif 4", Georgia, serif;
+      font-size: 1.18rem;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .flow-card span {
+      color: var(--ink-secondary);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      display: block;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--line);
+      margin-top: auto;
+      padding: 32px 0 48px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .footer-left {
+      max-width: 65ch;
+    }
+    .footer-badges {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .footer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      background: var(--card-bg);
+      border: 1px solid var(--line);
+      color: var(--ink-secondary);
+    }
+
+    /* Responsive */
+    @media (max-width: 860px) {
+      .pair {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .flow {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      header {
+        padding-top: 36px;
+      }
+      .together {
+        padding: 30px 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Emergency Assistance Topbar -->
+  <div class="emergency-bar">
+    <div class="wrap">
+      <div class="emergency-content">
+        <div class="emergency-pills">
+          <a href="tel:14416" class="helpline-item">
+            <span>Tele-MANAS Mental Health:</span>
+            <strong>14416</strong>
+          </a>
+          <a href="tel:15100" class="helpline-item">
+            <span>Free Legal Aid (NALSA):</span>
+            <strong>15100</strong>
+          </a>
+          <a href="tel:112" class="helpline-item urgent">
+            <span>National Emergency:</span>
+            <strong>112</strong>
+          </a>
+        </div>
+        <button id="themeToggle" class="theme-toggle-btn" type="button" aria-label="Toggle theme">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <span id="themeToggleText">Theme</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <header>
+      <div class="badge-tag">Smart India Hackathon • Problem Statement 26094</div>
+      <h1>Two portals that help victims heal and caseworkers stay in touch</h1>
+      <p class="lead">After an atrocity, a victim needs two things: a safe place to talk, and someone who keeps checking that they are protected and supported. Zen provides the first. Sahayak delivers the second.</p>
+    </header>
+
+    <main>
+      <!-- Dual Portals Grid -->
+      <section class="pair" aria-label="Portal Selection">
+        
+        <!-- Zen Portal Card -->
+        <article class="portal zen">
+          <span class="who">For the Victim</span>
+          <h2>Zen</h2>
+          <p class="portal-desc">A private, calm space where a victim can write, talk, and breathe without fear. It works directly on the user's device, ensuring complete privacy with zero unauthorized data sharing.</p>
+          
+          <ul class="feature-list">
+            <li>
+              <span class="feature-icon">✓</span>
+              <span><strong>Private Journal:</strong> Write freely with real-time sentiment analysis that gently detects distressing thought patterns and helps reframe them.</span>
+            </li>
+            <li>
+              <span class="feature-icon">✓</span>
+              <span><strong>Five Caring Companions:</strong> Tailored support personas including a friendly listener, cognitive reframe guide, legal protector, trauma healer, and custom confidant.</span>
+            </li>
+            <li>
+              <span class="feature-icon">✓</span>
+              <span><strong>Know Your Rights:</strong> Plain-language legal guides and one-touch connections to free legal assistance (NALSA 15100) and Tele-MANAS (14416).</span>
+            </li>
+            <li>
+              <span class="feature-icon">✓</span>
+              <span><strong>Calming Exercises:</strong> Interactive box-breathing visualizations, grounding tools, and curated psycho-educational libraries.</span>
+            </li>
+            <li>
+              <span class="feature-icon">✓</span>
+              <span><strong>Multilingual Access:</strong> Speak, read, and reflect naturally in Hindi, Assamese, Bengali, Tamil, Telugu, and English.</span>
+            </li>
+          </ul>
+
+          <a class="btn" href="https://zen-2cok.vercel.app/#landing" target="_blank" rel="noopener noreferrer">
+            <span>Open Zen Portal</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </article>
+
+        <!-- Sahayak Portal Card -->
+        <article class="portal sah">
+          <span class="who">For the Caseworker</span>
+          <h2>Sahayak</h2>
+          <p class="portal-desc">The unified administrative command center for district officers and caseworkers. It tracks case milestones, alerts response teams, and ensures no victim is left behind.</p>
+          
+          <ul class="feature-list">
+            <li>
+              <span class="feature-icon">✓</span>
+              <span><strong>Automated Voice Check-Ins:</strong> Scheduled outbound IVR calls in regional dialects allowing victims to respond with a simple keypress without needing a smartphone.</span>
+            </li>
+            <li>
+              <span class="feature-icon">✓</span>
+              <span><strong>Strict Consent-Driven Care:</strong> Victims directly share self-reported safety statuses; no assumptions or invasive telemetry are ever collected.</span>
+            </li>
+            <li>
+              <span class="feature-icon">✓</span>
+              <span><strong>Proactive Case Continuity:</strong> Real-time triage flags non-responsive cases or emergency distress signals for immediate officer intervention.</span>
+            </li>
+            <li>
+              <span class="feature-icon">✓</span>
+              <span><strong>District &amp; Tehsil Geo-View:</strong> Granular jurisdiction mapping ensuring local rapid response units and witness protection officers take coordinated action.</span>
+            </li>
+            <li>
+              <span class="feature-icon">✓</span>
+              <span><strong>Audit &amp; Compliance Trail:</strong> Secure records for government welfare distribution, compensation tracking, and court compliance reports.</span>
+            </li>
+          </ul>
+
+          <a class="btn" href="https://sahayak-portal-mosje.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <span>Open Sahayak Dashboard</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </article>
+
+      </section>
+
+      <!-- Unified Workflow -->
+      <section class="together">
+        <h3>How They Work Together</h3>
+        <p class="together-desc">Zen empowers the victim each day with unconditional privacy and psychological resilience. Sahayak guarantees institutional accountability and proactive outreach. Together, the victim is never alone, and the caseworkers are never left guessing.</p>
+        
+        <div class="flow">
+          <div class="flow-card">
+            <b>1. Feel Safe</b>
+            <span>The victim uses Zen on their personal device for private healing, emotional reframing, and knowing their legal protections.</span>
+          </div>
+          <div class="flow-card">
+            <b>2. Stay in Touch</b>
+            <span>Sahayak initiates regular, low-friction check-in calls in the victim's mother tongue without requiring Internet or smartphones.</span>
+          </div>
+          <div class="flow-card">
+            <b>3. Rapid Help</b>
+            <span>When distress is detected or calls go unanswered, caseworkers receive prioritized alerts to deploy protection officers immediately.</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-left">
+          <p><strong>Zen &amp; Sahayak Ecosystem</strong> &bull; Developed for Smart India Hackathon (SIH) Problem Statement 26094.</p>
+          <p style="margin-top: 6px;">Disclaimer: Zen is a supportive psycho-social aid, not a substitute for clinical psychiatric care or law enforcement emergency response. In urgent situations, immediately contact the national emergency number (112).</p>
+        </div>
+        <div class="footer-badges">
+          <span class="footer-badge">🔒 Privacy First</span>
+          <span class="footer-badge">🇮🇳 SIH 26094</span>
+          <span class="footer-badge">⚡ Vercel Ready</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Theme toggle handling
+    const toggleBtn = document.getElementById('themeToggle');
+    const toggleText = document.getElementById('themeToggleText');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function updateThemeUI(theme) {
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        toggleText.textContent = 'Light Mode';
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        toggleText.textContent = 'Dark Mode';
+      }
+    }
+
+    const savedTheme = localStorage.getItem('theme') || (prefersDark.matches ? 'dark' : 'light');
+    updateThemeUI(savedTheme);
+
+    toggleBtn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || (prefersDark.matches ? 'dark' : 'light');
+      const next = current === 'dark' ? 'light' : 'dark';
+      localStorage.setItem('theme', next);
+      updateThemeUI(next);
+    });
+
+    prefersDark.addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        updateThemeUI(e.matches ? 'dark' : 'light');
+      }
+    });
+  </script>
+</body>
+</html>

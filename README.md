@@ -1,7 +1,7 @@
 # Zen & Sahayak: Two Portals, One Safety Net
 
-> **Smart India Hackathon (SIH) • Problem Statement 26094**  
-> An integrated platform delivering victim psycho-social rehabilitation and proactive caseworker administration.
+> **Integrated Care & Protection Ecosystem**  
+> A unified platform delivering victim psycho-social rehabilitation and proactive caseworker administration.
 
 ---
 
